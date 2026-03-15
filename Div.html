@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Air Pollution Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #007BFF;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 1.1em;
+            color: #333;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+            color: #333;
+        }
+
+        input[type="text"]:focus {
+            border-color: #007BFF;
+            outline: none;
+        }
+
+        input[type="submit"] {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #218838;
+        }
+
+        .prediction {
+            margin-top: 20px;
+            font-size: 1.3em;
+            color: #ff5722;
+        }
+
+        /* Add responsive design for smaller screens */
+        @media screen and (max-width: 600px) {
+            .container {
+                width: 90%;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            input[type="text"], input[type="submit"] {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>   
+    <div class="container">
+        <h1>Air Pollution Prediction</h1>
+        <form action="/predict" method="POST">
+            <label for="so2">SO2 (µg/m³): </label>
+            <input type="text" id="so2" name="so2" required><br><br>
+
+            <label for="no2">NO2 (µg/m³): </label>
+            <input type="text" id="no2" name="no2" required><br><br>
+
+            <label for="co">CO (µg/m³): </label>
+            <input type="text" id="co" name="co" required><br><br>
+
+            <label for="o3">O3 (µg/m³): </label>
+            <input type="text" id="o3" name="o3" required><br><br>
+
+            <label for="pm10">PM10 (µg/m³): </label>
+            <input type="text" id="pm10" name="pm10" required><br><br>
+
+            <input type="submit" value="Predict"><br><br>
+        </form>
+
+        <!-- Display the prediction and air quality -->
+        {% if prediction_text %}
+        <div class="prediction">
+            <h3>{{ prediction_text }}</h3>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
+
